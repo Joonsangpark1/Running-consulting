@@ -2,36 +2,150 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>URun 관리자 페이지</title>
+  <title>Survey Admin Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      background: #0A0A0A;
+      color: #F5F5F5;
+      font-family: "Inter", sans-serif;
+    }
+
+    .admin-container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+
+    .admin-title {
+      text-align: center;
+      font-size: 2.3rem;
+      color: #2D7FFF;
+      margin-bottom: 40px;
+      font-weight: 800;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #111;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    thead {
+      background: linear-gradient(to right, #2D7FFF, #4AB0FF);
+    }
+
+    thead th {
+      padding: 14px;
+      color: white;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+
+    tbody tr {
+      border-top: 1px solid #222;
+      transition: 0.2s;
+    }
+
+    tbody tr:hover {
+      background: #1A1A1A;
+    }
+
+    tbody td {
+      padding: 12px;
+      color: #e3e3e3;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .loading {
+      text-align: center;
+      margin-top: 40px;
+      color: #4AB0FF;
+      font-size: 1.1rem;
+    }
+
+    .empty {
+      text-align: center;
+      margin-top: 40px;
+      color: #aaa;
+    }
+  </style>
 </head>
 
-<body style="background:#0A0A0A; color:white;">
+<body>
 
-  <h1 class="admin-title">📊 설문 결과 관리자 페이지</h1>
+  <div class="admin-container">
+    <h1 class="admin-title">Survey Admin Dashboard</h1>
 
-  <div id="loading" style="text-align:center; margin:20px; color:#6BB6FF;">데이터 로딩 중...</div>
-  <p id="empty" style="display:none; text-align:center; margin-top:20px; color:#999;">등록된 설문 데이터가 없습니다.</p>
+    <div id="loading" class="loading">데이터 불러오는 중...</div>
 
-  <table class="admin-table" id="survey-table" style="display:none;">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>기록</th>
-        <th>필요 요소</th>
-        <th>훈련 방식</th>
-        <th>금액</th>
-        <th>추가 기능</th>
-        <th>요청 기능</th>
-        <th>이메일</th>
-        <th>시간</th>
-      </tr>
-    </thead>
-    <tbody id="survey-body"></tbody>
-  </table>
+    <table id="survey-table" style="display:none;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>상황</th>
+          <th>10km 기록</th>
+          <th>현재 훈련</th>
+          <th>요청 기능</th>
+          <th>이메일</th>
+          <th>등록 시간</th>
+        </tr>
+      </thead>
 
-  <script src="./admin.js"></script>
+      <tbody id="survey-body"></tbody>
+    </table>
+
+    <p id="empty" class="empty" style="display:none;">설문 데이터가 없습니다.</p>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const table = document.getElementById("survey-table");
+      const tbody = document.getElementById("survey-body");
+      const loading = document.getElementById("loading");
+      const empty = document.getElementById("empty");
+
+      fetch("/api/survey")
+        .then(res => res.json())
+        .then(data => {
+          loading.style.display = "none";
+
+          if (!data || data.length === 0) {
+            empty.style.display = "block";
+            return;
+          }
+
+          table.style.display = "table";
+
+          data.forEach(row => {
+            const tr = document.createElement("tr");
+
+            tr.innerHTML = `
+              <td>${row.id}</td>
+              <td>${row.situation || "-"}</td>
+              <td>${row.current_time || "-"}</td>
+              <td>${row.current_training || "-"}</td>
+              <td>${row.premium_extra || "-"}</td>
+              <td>${row.email}</td>
+              <td>${row.created_at}</td>
+            `;
+
+            tbody.appendChild(tr);
+          });
+        })
+        .catch(err => {
+          loading.textContent = "데이터 로딩 실패 ❌";
+          console.error(err);
+        });
+    });
+  </script>
 
 </body>
 </html>

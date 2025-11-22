@@ -2,116 +2,185 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>프리미엄 등록</title>
+    <title>URun 프리미엄 등록</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 
+    <style>
+        .premium-body {
+            background: #f5f7ff;
+            padding: 40px 20px;
+        }
+
+        .premium-container {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .premium-title {
+            font-size: 2.4rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .premium-sub {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .p-card {
+            background: white;
+            padding: 30px 24px;
+            border-radius: 18px;
+            border: 1px solid #dce3f5;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+        }
+
+        .p-block { margin-bottom: 20px; }
+
+        .p-block label {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1.5px solid #ccd5ea;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: #ffffff;
+            transition: .2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #2d7fff;
+            box-shadow: 0 0 10px rgba(45,127,255,0.3);
+        }
+
+        textarea { min-height: 120px; }
+
+        #premium-msg, #premium-err {
+            margin-top: 1rem;
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        #premium-msg {
+            background: #e7f4ff;
+            border-left: 4px solid #2d7fff;
+        }
+
+        #premium-err {
+            background: #ffecec;
+            border-left: 4px solid #ff4d4d;
+        }
+        .btn-gradient {
+    padding: 1rem 2rem;
+    background: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+    box-shadow: 0 0 15px rgba(45, 127, 255, 0.4);
+}
+.btn-gradient:hover {
+    background: var(--blue-light);
+}
+
+.btn-outline {
+    padding: 1rem 2rem;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.2s;
+}
+.btn-outline:hover {
+    background: white;
+    color: black;
+}
+
+
+    </style>
+
 <body class="premium-body">
 
-    <section class="premium-container">
+<section class="premium-container">
 
-        <h1 class="premium-title">프리미엄 등록</h1>
-        <p class="premium-sub">
-            아래 정보를 입력해주시면 정밀한 개인 맞춤 마라톤 컨설팅을 준비해드립니다.<br>
-            입력하신 이메일로 분석 보고서가 전송됩니다.
-        </p>
+    <h1 class="premium-title">URun 프리미엄 등록</h1>
+    <p class="premium-sub">
+        아래 정보를 입력해주시면 URun 프리미엄 서비스 출시 시<br>
+        가장 먼저 안내드리겠습니다.
+    </p>
 
-        <div class="premium-card">
+    <div class="premium-card">
 
-            <!-- 고민 -->
-            <div class="p-block">
-                <label>지금 가장 간절한 목표나 고민 (자유롭게 작성)</label>
-                <textarea id="concern" placeholder="예: 10km 기록 정체, 풀코스 서브-4, 부상 후 회복 속도 등"></textarea>
-            </div>
-
-            <!-- 닉네임 -->
-            <div class="p-block">
-                <label>닉네임</label>
-                <input type="text" id="nickname" placeholder="예: 바람러너">
-            </div>
-
-            <!-- 이메일 -->
-            <div class="p-block">
-                <label>이메일</label>
-                <input type="email" id="email" placeholder="예: example@gmail.com">
-            </div>
-
-            <!-- 전화번호 -->
-            <div class="p-block">
-                <label>전화번호 (선택)</label>
-                <input type="text" id="phone" placeholder="예: 010-0000-0000">
-            </div>
-
-            <!-- 나이 -->
-            <div class="p-block">
-                <label>나이</label>
-                <input type="number" id="age" placeholder="예: 29">
-            </div>
-
-            <!-- 성별 -->
-            <div class="p-block">
-                <label>성별</label>
-                <select id="gender">
-                    <option value="">선택</option>
-                    <option>남성</option>
-                    <option>여성</option>
-                </select>
-            </div>
-
-            <!-- 키 -->
-            <div class="p-block">
-                <label>키 (cm)</label>
-                <input type="number" id="height" placeholder="예: 175">
-            </div>
-
-            <!-- 몸무게 -->
-            <div class="p-block">
-                <label>몸무게 (kg)</label>
-                <input type="number" id="weight" placeholder="예: 68">
-            </div>
-
-            <!-- 부상 -->
-            <div class="p-block">
-                <label>부상 이력 또는 주의사항</label>
-                <textarea id="injury" placeholder="예: 무릎 통증, 햄스트링 긴장 등"></textarea>
-            </div>
-
-            <!-- 최근 마라톤 기록 -->
-            <div class="p-block">
-                <label>최근 마라톤 기록</label>
-                <input type="text" id="latest_record" placeholder="예: 풀코스 4시간 02분">
-            </div>
-
-            <!-- 최근 3개월 기록 -->
-            <div class="p-block">
-                <label>최근 3개월 내 기록 (5km / 10km 등)</label>
-                <textarea id="recent_three" placeholder="예: 5km - 23:10 / 10km - 49:40"></textarea>
-            </div>
-
-            <!-- 주간 러닝 시간 -->
-            <div class="p-block">
-                <label>주간 러닝 연습 시간</label>
-                <input type="text" id="weekly_time" placeholder="예: 주 4회, 총 5~6시간">
-            </div>
-
-            <!-- 목표 -->
-            <div class="p-block">
-                <label>URun을 통해 이루고자 하는 목표</label>
-                <textarea id="goal" placeholder="예: 10km 35분대 진입, 하프 서브-1:40, 완주 후 회복 속도 향상 등"></textarea>
-            </div>
-
-            <!-- 메시지 -->
-            <div id="premium-msg" class="alert-success" style="display:none;"></div>
-            <div id="premium-err" class="alert-error" style="display:none;"></div>
-
-            <button id="premium-submit" class="btn-primary full-btn">
-                제출하기
-            </button>
-
+        <div class="p-block">
+            <label>닉네임 (필수)</label>
+            <input type="text" id="nickname" placeholder="예: 런하는토끼">
         </div>
-    </section>
 
-    <script src="premium.js"></script>
+        <div class="p-block">
+            <label>이메일 (필수)</label>
+            <input type="email" id="email" placeholder="you@example.com">
+        </div>
+
+        <div class="p-block">
+            <label>전화번호 (선택)</label>
+            <input type="text" id="phone" placeholder="010-0000-0000">
+        </div>
+
+        <div class="p-block">
+            <label>나이 (필수)</label>
+            <input type="number" id="age" placeholder="예: 29">
+        </div>
+
+        <div class="p-block">
+            <label>성별 (필수)</label>
+            <select id="gender">
+                <option value="">선택해주세요</option>
+                <option>남성</option>
+                <option>여성</option>
+            </select>
+        </div>
+
+        <div class="p-block">
+            <label>가장 달성하고 싶은 러닝 목표 (필수)</label>
+            <select id="goal">
+                <option value="">선택해주세요</option>
+                <option>10km 35분대 진입</option>
+                <option>하프 1시간 40분대</option>
+                <option>풀코스 3시간 30분</option>
+                <option>부상 없이 꾸준한 페이스 유지</option>
+                <option>체계적인 훈련 루틴 구축</option>
+            </select>
+        </div>
+
+        <div class="p-block">
+            <label>현재 가장 간절한 고민 (선택)</label>
+            <textarea id="motivation" placeholder="예: 부상이 잦아서 페이스가 떨어지는 것이 고민입니다."></textarea>
+        </div>
+
+        <div id="premium-msg" class="alert-success" style="display:none; margin-top:15px;"></div>
+        <div id="premium-err" class="alert-error" style="display:none; margin-top:15px;"></div>
+
+        <button id="premium-submit" class="btn-gradient">제출하기</button>
+    </div>
+
+</section>
+
+<script src="premium.js"></script>
 </body>
 </html>

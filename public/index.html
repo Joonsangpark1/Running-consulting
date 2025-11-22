@@ -9,7 +9,7 @@
 
 <body>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-overlay"></div>
 
@@ -26,67 +26,13 @@
                     onclick="document.getElementById('survey').scrollIntoView({behavior:'smooth'})">
                     시작하기
                 </button>
-                <button class="btn-outline">보고서 샘플</button>
+
+                <button class="btn-outline" onclick="window.location.href='index_sample.png'">
+                    보고서 샘플
+                </button>
             </div>
         </div>
     </section>
-
-
-    <!-- FEATURES SECTION -->
-    <section class="section-white" id="features">
-        <h2 class="title-center">Why Our Consulting Works</h2>
-        <p class="subtitle-center">
-            러닝 엔진(심폐), 근력, 기술, 페이스 전략을 모두 다각도로 분석합니다.
-        </p>
-
-        <div class="features-grid">
-            <div class="feature-card">
-                <img src="icon1.png" class="feature-icon"/>
-                <h3>정밀 페이스 분석</h3>
-                <p>10km 러닝 페이스 분포를 과학적으로 분석합니다.</p>
-            </div>
-
-            <div class="feature-card">
-                <img src="icon2.png" class="feature-icon"/>
-                <h3>러닝 엔진 평가</h3>
-                <p>VO₂max·LT·러닝 이코노미 기반의 실제 체력 수치를 산출합니다.</p>
-            </div>
-
-            <div class="feature-card">
-                <img src="icon3.png" class="feature-icon"/>
-                <h3>개인 맞춤 전략</h3>
-                <p>당신의 약점을 정확히 찾아내고, 개선 로드맵을 제공합니다.</p>
-            </div>
-        </div>
-    </section>
-
-
-
-
-    <!-- HOW IT WORKS -->
-    <section class="section-soft">
-        <h2 class="title-center">How This Works</h2>
-
-        <div class="how-grid">
-            <img src="mobile_mockup.png" class="how-img"/>
-
-            <div class="how-steps">
-                <div class="step">
-                    <h4>1. 설문 입력</h4>
-                    <p>현재 기록·훈련 상황·체력 데이터를 입력합니다.</p>
-                </div>
-                <div class="step">
-                    <h4>2. 분석 엔진 실행</h4>
-                    <p>러닝 엔진 + 페이스 전략을 모두 병합해 분석합니다.</p>
-                </div>
-                <div class="step">
-                    <h4>3. 맞춤 로드맵 제공</h4>
-                    <p>30분대로 가기 위한 훈련 로드맵을 전달해드립니다.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
 
 
     <!-- SURVEY SECTION -->
@@ -95,7 +41,6 @@
 
         <div class="form-card">
 
-            <!-- NEW QUESTION (택1 선택) -->
             <div class="form-block">
                 <label>지금 본인의 상황을 가장 잘 설명하는 문장을 골라주세요. (택 1)</label>
                 <select id="situation">
@@ -120,24 +65,8 @@
             </div>
 
             <div class="form-block">
-                <label>30분대 진입을 위해 필요한 요소</label>
-                <textarea id="needed_factor"></textarea>
-            </div>
-
-            <div class="form-block">
                 <label>현재 운영 중인 훈련 방식</label>
                 <textarea id="current_training"></textarea>
-            </div>
-
-            <div class="form-block">
-                <label>지불 가능한 금액</label>
-                <select id="price_range">
-                    <option value="">선택해주세요</option>
-                    <option>3만원 이하</option>
-                    <option>3만~5만원</option>
-                    <option>5만~8만원</option>
-                    <option>8만원 이상</option>
-                </select>
             </div>
 
             <div class="form-block">
@@ -162,8 +91,6 @@
 
         </div>
     </section>
-
-
 
     <footer class="footer">
         © 2025 Running Performance Premium Consulting

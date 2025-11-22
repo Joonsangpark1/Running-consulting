@@ -209,22 +209,65 @@ body {
 /* ------------------------------------------
    PREMIUM VALUE PROPOSITIONS
 -------------------------------------------*/
-.premium-grid {
+/* PREMIUM SECTION LAYOUT */
+.premium-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.4rem;
-    margin-top: 3rem;
+    grid-template-columns: minmax(260px, 1fr) 1.4fr;
+    gap: 2.5rem;
+    align-items: flex-start;
+    margin-top: 2.5rem;
 }
 
-.premium-item {
-    background: #f7f9ff;
-    padding: 1.4rem 1rem;
-    border-radius: 12px;
-    border: 1px solid #d9deee;
-    font-weight: 600;
+.premium-visual {
     text-align: center;
 }
 
+.premium-main-img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.premium-caption {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+/* PREMIUM GRID */
+.premium-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+}
+
+.premium-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #f7f9ff;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    border: 1px solid #d9deee;
+    font-size: 0.97rem;
+}
+
+.premium-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+    .premium-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .premium-visual {
+        order: -1; /* 모바일에서는 이미지가 먼저 올라오도록 */
+    }
+}
 
 
 /* ------------------------------------------

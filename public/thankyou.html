@@ -1,42 +1,220 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>제출 완료 | Running Premium Consulting</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <title>URun 프리미엄 – 안내 페이지</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        .thankyou-wrap {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .thankyou-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .thankyou-sub {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 35px;
+        }
+
+        .premium-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .premium-visual {
+            flex: 1 1 330px;
+            text-align: center;
+        }
+
+        .premium-main-img {
+            width: 100%;
+            border-radius: 14px;
+            cursor: zoom-in;
+            transition: 0.25s;
+        }
+        .premium-main-img:hover {
+            transform: scale(1.03);
+        }
+
+        .premium-caption {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .premium-grid {
+            flex: 1 1 330px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .premium-item {
+            display: flex;
+            align-items: center;
+            background: #f7f9ff;
+            border: 1px solid #dce4f7;
+            padding: 12px 14px;
+            border-radius: 10px;
+            gap: 12px;
+        }
+
+        .premium-icon {
+            width: 40px;
+            opacity: 0.8;
+        }
+
+        /* Image fullscreen modal */
+        .img-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+            padding: 20px;
+        }
+
+        .img-modal-content {
+            max-width: 95%;
+            max-height: 90%;
+            border-radius: 12px;
+            animation: zoomIn 0.2s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Button (style.css의 btn-primary 스타일과 동일) */
+        .btn-primary {
+            padding: 1rem 2rem;
+            background: #2D7FFF;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.2s;
+            box-shadow: 0 0 15px rgba(45, 127, 255, 0.4);
+            margin-top: 40px;
+        }
+        .btn-primary:hover {
+            background: #6BB6FF;
+        }
+    </style>
 </head>
 
 <body>
 
-    <section class="section-white" style="padding-top: 7rem;">
-        <h1 class="title-center">설문이 제출되었습니다!</h1>
+<div class="thankyou-wrap">
+
+    <h1 class="thankyou-title">설문이 완료되었습니다! 🎉</h1>
+
+    <p class="thankyou-sub">
+        현재 URun 프리미엄은 <b>유료 서비스가 아닌, 수요조사 단계</b>입니다.<br>
+        실제 서비스 런칭 시 <b>예상 구독료는 월 1,000원</b> 수준이며,<br>
+        정식 오픈 시 이메일로 우선 안내드릴 예정입니다.
+    </p>
+
+
+    <!-- MAIN SECTION -->
+    <section class="section-white" id="premium">
+        <h2 class="title-center">URun 프리미엄에서는 무엇을 제공하나요?</h2>
         <p class="subtitle-center">
-            귀하의 러닝 데이터를 기반으로 한 <strong>고급 분석 보고서 준비</strong>가 시작됩니다.<br>
-            아래는 Premium Consulting에서 제공하는 주요 구성입니다.
+            단순 운동 루틴이 아니라, 기록 향상을 위한 구조적인 분석과 설계를 제공합니다.
         </p>
 
-        <!-- 🔥 Premium Grid (이제 여기서만 노출됨) -->
-        <div class="premium-grid">
-            <div class="premium-item">📌 VO₂max 기반 심폐 엔진 진단</div>
-            <div class="premium-item">📌 10km 페이스 분포 정밀 분석</div>
-            <div class="premium-item">📌 근력/부상 위험도 진단</div>
-            <div class="premium-item">📌 러닝 이코노미 개선 전략 제공</div>
-            <div class="premium-item">📌 30분대 진입을 위한 구조적 훈련 로드맵</div>
-            <div class="premium-item">📌 개인 맞춤 훈련 강도/구성표 제공</div>
+        <div class="premium-layout">
+            <!-- Example Plan Image -->
+            <div class="premium-visual">
+                <img src="premium_sample.png" 
+                     alt="URun 추천 PLAN 예시" 
+                     class="premium-main-img"
+                     onclick="openImageModal(this.src)">
+
+                <p class="premium-caption">
+                    ↑ 10km 39분대를 목표로 한 1주차 플랜 예시<br>
+                    (실제 제공 시 개인 기록 및 상황에 맞게 커스터마이징 됩니다)
+                </p>
+            </div>
+
+            <!-- Provided Features -->
+            <div class="premium-grid">
+                <div class="premium-item">
+                    <span>📌VO₂max·LT 기반 <b>심폐 엔진 진단 리포트</b></span>
+                </div>
+
+                <div class="premium-item">
+                    <span>📌10km 러닝 데이터 기반 <b>페이스 분포 정밀 분석</b></span>
+                </div>
+
+                <div class="premium-item">
+                    <span><b>📌근력 밸런스 / 부상 위험도</b> 체크 및 보강 운동 안내</span>
+                </div>
+
+                <div class="premium-item">
+                    <span>📌보폭·케이던스 기반 <b>러닝 이코노미 개선 전략</b></span>
+                </div>
+
+                <div class="premium-item">
+                    <span>📌목표 기록 달성을 위한 <b>훈련 로드맵</b> 제공</span>
+                </div>
+
+                <div class="premium-item">
+                    <span>📌스케줄 기반 <b>개인 맞춤 훈련 구성표</b></span>
+                </div>
+            </div>
         </div>
 
-        <div style="text-align:center; margin-top:3rem;">
-            <button class="btn-primary"
-                onclick="window.location.href='premium.html'">
-                프리미엄 등록하기
+        <!-- ⭐ 프리미엄 페이지 이동 버튼 추가 -->
+        <div style="text-align:center; margin-top: 50px;">
+            <p>프리미엄 런칭을 위한 설문입니다.</p>
+            <button class="btn-primary" onclick="location.href='premium.html'">
+                프리미엄 설문하기
             </button>
         </div>
-    </section>
 
-    <footer class="footer">
-        © 2025 Running Performance Premium Consulting
-    </footer>
+    </section>
+</div>
+
+<!-- Image Modal -->
+<div id="imgModal" class="img-modal" onclick="closeImageModal()">
+    <img id="imgModalContent" class="img-modal-content">
+</div>
+
+<script>
+function openImageModal(src) {
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("imgModalContent");
+    modal.style.display = "flex";
+    modalImg.src = src;
+}
+
+function closeImageModal() {
+    document.getElementById("imgModal").style.display = "none";
+}
+</script>
 
 </body>
 </html>
