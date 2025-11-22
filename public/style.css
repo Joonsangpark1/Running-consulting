@@ -1,0 +1,320 @@
+/* ------------------------------------------
+   GLOBAL RESET
+-------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Pretendard', sans-serif;
+    background-color: #ffffff;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* Color System */
+:root {
+    --blue: #2D7FFF;
+    --blue-light: #6BB6FF;
+    --dark: #0A0A0A;
+    --soft-gray: #EEF3FF;
+    --light-gray: #F5F7FF;
+    --border-gray: #E2E6F0;
+    --text-gray: #555;
+}
+
+
+
+/* ------------------------------------------
+   HERO (Poster Style)
+-------------------------------------------*/
+.hero {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    background: url("runner_image.png") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 8vw;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.75) 10%,
+        rgba(0, 0, 0, 0.15) 70%
+    );
+}
+
+.hero-content {
+    position: relative;
+    max-width: 550px;
+    z-index: 10;
+}
+
+.hero-title {
+    font-size: 4.4rem;
+    font-weight: 900;
+    line-height: 1.05;
+    color: white;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.hero-sub {
+    font-size: 1.2rem;
+    color: #e8e8e8;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+/* Buttons */
+.btn-primary {
+    padding: 1rem 2rem;
+    background: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+    box-shadow: 0 0 15px rgba(45, 127, 255, 0.4);
+}
+.btn-primary:hover {
+    background: var(--blue-light);
+}
+
+.btn-outline {
+    padding: 1rem 2rem;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.2s;
+}
+.btn-outline:hover {
+    background: white;
+    color: black;
+}
+
+
+
+/* ------------------------------------------
+   SECTION BASES
+-------------------------------------------*/
+.section-white {
+    padding: 6rem 10vw;
+    background: #ffffff;
+}
+
+.section-soft {
+    padding: 6rem 10vw;
+    background: var(--soft-gray);
+}
+
+.title-center {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 900;
+}
+.subtitle-center {
+    text-align: center;
+    color: var(--text-gray);
+    margin-top: 0.6rem;
+    margin-bottom: 3rem;
+}
+
+
+
+/* ------------------------------------------
+   FEATURES (3 Columns)
+-------------------------------------------*/
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2.4rem;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 2rem 1.5rem;
+    border-radius: 14px;
+    border: 1px solid var(--border-gray);
+    text-align: center;
+    transition: 0.25s;
+}
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.feature-icon {
+    width: 52px;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.7rem;
+}
+
+
+
+/* ------------------------------------------
+   HOW IT WORKS
+-------------------------------------------*/
+.how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    align-items: center;
+    gap: 3rem;
+}
+
+.how-img {
+    width: 80%;
+    border-radius: 20px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+}
+
+.how-steps .step {
+    margin-bottom: 1.8rem;
+}
+.how-steps h4 {
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+.how-steps p {
+    color: var(--text-gray);
+}
+
+
+
+/* ------------------------------------------
+   PREMIUM VALUE PROPOSITIONS
+-------------------------------------------*/
+.premium-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.4rem;
+    margin-top: 3rem;
+}
+
+.premium-item {
+    background: #f7f9ff;
+    padding: 1.4rem 1rem;
+    border-radius: 12px;
+    border: 1px solid #d9deee;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+
+/* ------------------------------------------
+   SURVEY FORM
+-------------------------------------------*/
+.form-card {
+    background: white;
+    padding: 2.6rem 2rem;
+    border-radius: 18px;
+    border: 1px solid var(--border-gray);
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.form-block {
+    margin-bottom: 1.8rem;
+}
+
+.form-block label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.6rem;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1.6px solid var(--border-gray);
+    border-radius: 10px;
+    background: #fff;
+    font-size: 1rem;
+    transition: 0.25s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 10px rgba(45, 127, 255, 0.35);
+}
+
+textarea {
+    min-height: 120px;
+}
+
+.full-btn {
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+}
+
+
+
+/* ------------------------------------------
+   FOOTER
+-------------------------------------------*/
+.footer {
+    background: #0A0A0A;
+    color: #ddd;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+.admin-title {
+  text-align: center;
+  margin: 40px 0;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.admin-table {
+  width: 90%;
+  margin: 0 auto 60px auto;
+  border-collapse: collapse;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.admin-table th, .admin-table td {
+  border: 1px solid #333;
+  padding: 12px;
+  text-align: center;
+}
+
+.admin-table th {
+  background: #2d7fff;
+  color: #000;
+  font-weight: 800;
+}
+
+.admin-table tr:nth-child(even) {
+  background: #111;
+}

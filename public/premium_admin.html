@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>Premium Users Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        body {
+            background: #0A0A0A;
+            color: #F5F5F5;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .admin-title {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 2rem;
+            color: #ffffff;
+            font-weight: 800;
+        }
+
+        /* 관리자 테이블 공통 */
+        .admin-table {
+            width: 92%;
+            margin: 0 auto 60px auto;
+            border-collapse: collapse;
+            background: #1a1a1a;
+            color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            border: 1px solid #333;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .admin-table th {
+            background: #2d7fff;
+            color: #000;
+            font-weight: 800;
+        }
+
+        .admin-table tr:nth-child(even) {
+            background: #111;
+        }
+
+        #loading,
+        #empty {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.1rem;
+        }
+
+        #loading {
+            color: #6BB6FF;
+        }
+
+        #empty {
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="admin-title">🏅 프리미엄 유저 관리자 페이지</h1>
+
+    <div id="loading">데이터 로딩 중...</div>
+    <p id="empty" style="display:none;">등록된 프리미엄 유저가 없습니다.</p>
+
+    <table class="admin-table" id="premium-table" style="display:none;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>나이</th>
+                <th>성별</th>
+                <th>닉네임</th>
+                <th>이메일</th>
+                <th>전화번호</th>
+                <th>키</th>
+                <th>몸무게</th>
+                <th>최근 마라톤 기록</th>
+                <th>5km/10km 기록</th>
+                <th>주간 러닝 시간</th>
+                <th>목표</th>
+                <th>주의사항</th>
+                <th>등록 시간</th>
+            </tr>
+        </thead>
+        <tbody id="premium-body"></tbody>
+    </table>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const table = document.getElementById("premium-table");
+            const tbody = document.getElementById("premium-body");
+            const loading = document.getElementById("loading");
+            const empty = document.getElementById("empty");
+
+            fetch("/api/premium")
+                .then(res => res.json())
+                .then(data => {
+                    loading.style.display = "none";
+
+                    if (!data || data.length === 0) {
+                        empty.style.display = "block";
+                        return;
+                    }
+
+                    table.style.display = "table";
+
+                    data.forEach(user => {
+                        const row = document.createElement("tr");
+
+                        row.innerHTML = `
+                            <td>${user.id}</td>
+                            <td>${user.age}</td>
+                            <td>${user.gender}</td>
+                            <td>${user.nickname}</td>
+                            <td>${user.email}</td>
+                            <td>${user.phone || "-"}</td>
+                            <td>${user.height || "-"}</td>
+                            <td>${user.weight || "-"}</td>
+                            <td>${user.recent_record || "-"}</td>
+                            <td>${user.recent_510km || "-"}</td>
+                            <td>${user.weekly_time || "-"}</td>
+                            <td>${user.goal || "-"}</td>
+                            <td>${user.warning || "-"}</td>
+                            <td>${user.created_at}</td>
+                        `;
+
+                        tbody.appendChild(row);
+                    });
+                })
+                .catch(err => {
+                    loading.innerHTML = "❌ 데이터 로드 실패";
+                    console.error(err);
+                });
+        });
+    </script>
+
+</body>
+</html>

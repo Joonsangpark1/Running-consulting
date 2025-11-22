@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>URun 관리자 페이지</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="background:#0A0A0A; color:white;">
+
+  <h1 class="admin-title">📊 설문 결과 관리자 페이지</h1>
+
+  <div id="loading" style="text-align:center; margin:20px; color:#6BB6FF;">데이터 로딩 중...</div>
+  <p id="empty" style="display:none; text-align:center; margin-top:20px; color:#999;">등록된 설문 데이터가 없습니다.</p>
+
+  <table class="admin-table" id="survey-table" style="display:none;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>기록</th>
+        <th>필요 요소</th>
+        <th>훈련 방식</th>
+        <th>금액</th>
+        <th>추가 기능</th>
+        <th>요청 기능</th>
+        <th>이메일</th>
+        <th>시간</th>
+      </tr>
+    </thead>
+    <tbody id="survey-body"></tbody>
+  </table>
+
+  <script src="./admin.js"></script>
+
+</body>
+</html>

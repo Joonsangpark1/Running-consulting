@@ -1,0 +1,19 @@
+{
+  "name": "urun",
+  "version": "1.0.0",
+  "description": "URun running performance consulting service",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "build": "npm install"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemailer": "^7.0.10",
+    "sqlite3": "^5.1.7"
+  }
+}
